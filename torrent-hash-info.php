@@ -1,9 +1,27 @@
-<body>
-	<input type="file" id="fileInput">
-	<pre id="fileDisplayArea"><pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Torrent File to Magnet Link</title>
+	<link rel="stylesheet" href="https://arunpandiyan.in/assets/css/bootstrap.css">
+</head>
 
-    <script>
-        //Minified Rusha:
+<body>
+	<div class="container col-12 pt-5 m-auto text-center">
+		<div class="file-input col-8 m-auto">
+			<input type="file" class="form-control" id="fileInput">
+			<pre id="fileDisplayArea"><pre>
+		</div>
+		<div class="magnet-link">
+			<input type="text" class="form-control" id="magent">
+		</div>
+	</div>
+	
+<script src="//arunpandiyan.in/assets/js/jquery.js"></script>
+<script>
+//Minified Rusha:
 
 (function(){if(typeof module!=='undefined'){module.exports=Rusha;}
 if(typeof window!=='undefined'){window.Rusha=Rusha;}
@@ -42,6 +60,9 @@ var r = new Rusha();
 			torrentArrayBuffer = reader.result;
 			var int8view = new Uint8Array(torrentArrayBuffer);
 			console.log(bdecode(int8view));
+
+			// test - 'blabla';
+			document.getElementById("magent").value = "magnet:?xt=urn:btih:"+r.digestFromArrayBuffer(torrentArrayBuffer.slice(infoBegin, infoEnd));
             console.log("Info_Hash: " + r.digestFromArrayBuffer(torrentArrayBuffer.slice(infoBegin, infoEnd)));
 		}
 		reader.readAsArrayBuffer(file);
@@ -114,5 +135,7 @@ function bdecode(str){
 			return fstring;
 	}
 }
+
     </script>
 </body>
+</html>
