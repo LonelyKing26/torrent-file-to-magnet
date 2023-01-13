@@ -17,6 +17,9 @@
 		<div class="magnet-link">
 			<input type="text" class="form-control" id="magent">
 		</div>
+		<div id="file-name">
+
+		</div>
 	</div>
 	
 <script src="//arunpandiyan.in/assets/js/jquery.js"></script>
@@ -59,7 +62,11 @@ var r = new Rusha();
 			pos = 0;
 			torrentArrayBuffer = reader.result;
 			var int8view = new Uint8Array(torrentArrayBuffer);
+			// console.log(int8view);
+			// myval = JSON.encode(int8view);
 			console.log(bdecode(int8view));
+			// console.log(myval);
+			// console.log(r.digestFromArrayBuffer(torrentArrayBuffer.slice(info)));
 
 			// test - 'blabla';
 			document.getElementById("magent").value = "magnet:?xt=urn:btih:"+r.digestFromArrayBuffer(torrentArrayBuffer.slice(infoBegin, infoEnd));
